@@ -1,3 +1,9 @@
+%__font-14{
+    font-size: 14px;
+}
+%__font-16{
+    font-size: 16px;
+}
 #title{
     width: 1012px;
     text-align: center;
@@ -22,14 +28,23 @@
     }
 }
 
+#left{
+    .left-appeal{
+        &__text{
+            font-size: 14px;
+        }
+    }
+}
+
 #right{
     width: 100%;
-    .right{
+    // .right{
     
-    }
+    // }
     .careers{
         margin-bottom: 24px;
         .year{
+            @extend %__font-14;
             font-weight: normal;
             position: relative;
             &:after{
@@ -37,7 +52,7 @@
                 width: 100%;
                 position: absolute;
                 height: 1px;
-                background-color: #ccc;
+                background-color: #e1e4e8;
                 display: block;
                 margin: auto;
                 top: 0;
@@ -50,10 +65,14 @@
             }
         }
         .affiliation{
-            font-weight: normal;
-        }
-        .language{
-            font-weight: normal;
+            @extend %__font-16;
+            margin-bottom: 12px;
+            font-weight: bold;
+            &-info{
+                @extend %__font-14;
+                margin-top: 12px;
+                margin-bottom: 24px;
+            }
         }
         &-body{
             padding-left: 24px;
@@ -68,7 +87,7 @@
                 top: 0;
                 bottom: 0;
                 left: 8px;
-                background-color: #ccc;
+                background-color: #e1e4e8;
             }
         }
     }
