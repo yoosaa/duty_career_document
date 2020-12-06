@@ -1,8 +1,16 @@
+// import
+@import 'destyle';
+
+
+
 %__font-14{
     font-size: 14px;
 }
 %__font-16{
     font-size: 16px;
+}
+%__font-bold{
+    font-weight: bold;
 }
 $colors: (
     title-01: #0366d6,
@@ -15,7 +23,9 @@ $colors: (
     font-size: 24px;
     margin: 0 auto;
 }
+
 #main{
+    line-height: 1.6;
     width: 1012px;
     margin: 0 auto;
     display: flex;
@@ -39,12 +49,27 @@ $colors: (
     top: 40px;
     .left-name{
         &__name{
+            @extend %__font-bold;
             font-size: 24px;
         }
     }
     .left-appeal{
         &__text{
             font-size: 14px;
+        }
+    }
+    .anks{
+        margin-top: 90px;
+    }
+    .ank{
+        @extend %__font-bold;
+        padding: 8px 0;
+        &:hover{
+            color: map-get($colors, 'title-01');
+            cursor: pointer;
+        }
+        &.current{
+            background-color: map-get($colors, 'back-01');
         }
     }
 }
@@ -56,15 +81,18 @@ $colors: (
         &-inner{
             margin-top: 60px;
         }
-        &-title{
-            position: relative;
+        &-sections{
             margin-top: 80px;
-            padding-left: 12px;
-            color: map-get($colors, 'title-01');
-            font-size: 22px;
             &:first-child{
                 margin-top: 0;
             }
+        }
+        &-title{
+            @extend %__font-bold;
+            position: relative;
+            padding-left: 12px;
+            color: map-get($colors, 'title-01');
+            font-size: 22px;
             &:before{
                 content: "";
                 width: 3px;
@@ -111,10 +139,13 @@ $colors: (
                 @extend %__font-14;
                 margin-top: 12px;
                 margin-bottom: 24px;
+                &:last-child{
+                    margin-bottom: 0;
+                }
             }
         }
         &-body{
-            padding-left: 24px;
+            padding: 24px;
             position: relative;
             &:before{
                 content: "";
@@ -132,7 +163,6 @@ $colors: (
     }
     .right-body__table{
         border-collapse: collapse;
-        line-height: 1;
     }
     .table{
         &-rows{
@@ -147,9 +177,16 @@ $colors: (
         }
         &-right{
             padding-left: 16px;
+            vertical-align: middle;
         }
         &-all{
-            padding: 0 16px
+            padding: 16px;
+            &__title{
+                @extend %__font-bold;
+            }
+            &__text{
+                margin-top: 8px;
+            }
         }
     }
 }
