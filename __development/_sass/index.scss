@@ -4,6 +4,11 @@
 %__font-16{
     font-size: 16px;
 }
+$colors: (
+    title-01: #0366d6,
+    back-01: #eaecef
+);
+
 #title{
     width: 1012px;
     text-align: center;
@@ -21,7 +26,7 @@
     }
 
     .col-3{
-        width: 25%;
+        width: 20%;
     }
     .col-1{
         width: 75%;
@@ -29,6 +34,14 @@
 }
 
 #left{
+    position: fixed;
+    left: calc(50% - 506px);
+    top: 40px;
+    .left-name{
+        &__name{
+            font-size: 24px;
+        }
+    }
     .left-appeal{
         &__text{
             font-size: 14px;
@@ -38,9 +51,20 @@
 
 #right{
     width: 100%;
-    // .right{
-    
-    // }
+    margin-left: 32%;
+    .right{
+        &-inner{
+            margin-top: 60px;
+        }
+        &-title{
+            margin-top: 80px;
+            color: map-get($colors, 'title-01');
+            font-size: 22px;
+            &:first-child{
+                margin-top: 0;
+            }
+        }
+    }
     .careers{
         margin-bottom: 24px;
         .year{
@@ -89,6 +113,28 @@
                 left: 8px;
                 background-color: #e1e4e8;
             }
+        }
+    }
+    .right-body__table{
+        border-collapse: collapse;
+        line-height: 1;
+    }
+    .table{
+        &-rows{
+            border: 1px solid map-get($colors, 'back-01');
+        }
+        &-left{
+            font-weight: bold;
+            text-align: center;
+            padding: 16px 0;
+            border-right: 1px solid map-get($colors, 'back-01');
+            background-color: map-get($colors, 'back-01');
+        }
+        &-right{
+            padding-left: 16px;
+        }
+        &-all{
+            padding: 0 16px
         }
     }
 }
