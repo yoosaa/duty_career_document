@@ -13,8 +13,8 @@ window.addEventListener('load',function(){
     // intersect area
     const options = {
         root: null,
-        rootMargin: "-30px",
-        threshold: 0
+        rootMargin: "0px",
+        threshold: 0.20
     };
     const observer = new IntersectionObserver(doWhenIntersect, options);
     const observer_target = document.querySelectorAll('.right-sections');
@@ -25,17 +25,22 @@ window.addEventListener('load',function(){
 
 
     const click_target = document.querySelectorAll('.ank');
+    let scroll_target = '';
+    let scroll_distance = 0;
     click_target.forEach(click_target=>{
-
-        click_target.addEventListener('click',function(e){
+        
+        click_target.addEventListener('click',e=>{
+            const windowW = window.innerWidth;
+            const scroll_buffer = windowW > 599 ? 40 : 200;
             const scroll_target = document.querySelectorAll('.right-title');
             let target_attribute = '';
             scroll_target.forEach(element=>{
                 target_attribute = element.getAttribute('category');
                 if(target_attribute === e.target.getAttribute('category')){
-                    element.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    scroll_distance = window.pageYOffset + element.getBoundingClientRect().top - scroll_buffer;
+                    window.scrollTo({
+                        top: scroll_distance,
+                        behavior: "smooth"
                     });
                 }
             });

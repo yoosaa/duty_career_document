@@ -17,6 +17,20 @@ $colors: (
     back-01: #eaecef
 );
 
+$layout-width-inner: 1012px;
+
+$breakpoints: (
+  sp: "screen and (max-width: 599px)",
+  tab: "screen and (max-width: #{$layout-width-inner - 1px})",
+  pc: "screen and (min-width: #{$layout-width-inner})",
+);
+
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+    }
+}
+
 #title{
     width: 1012px;
     text-align: center;
@@ -30,16 +44,29 @@ $colors: (
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    @include mq(sp){
+        width: 100%;
+    }
     [class*=col-]{
         padding-right: 16px;
         padding-left: 16px;
+        @include mq(sp){
+            padding: 0;
+            padding-top: 18px;
+        }
     }
 
     .col-3{
         width: 20%;
+        @include mq(sp){
+            width: 100%;
+        }
     }
     .col-1{
         width: 75%;
+    }
+    @include mq(sp){
+        display: block;
     }
 }
 
@@ -47,6 +74,19 @@ $colors: (
     position: fixed;
     left: calc(50% - 506px);
     top: 40px;
+    background-color: #fff;
+    @include mq(sp){
+        top: 0;
+        left: 0;
+        height: 160px;
+        z-index: 2;
+    }
+    .left-name,
+    .left-appeal{
+        @include mq(sp){
+            padding: 0 12px;
+        }
+    }
     .left-name{
         &__name{
             @extend %__font-bold;
@@ -60,10 +100,18 @@ $colors: (
     }
     .anks{
         margin-top: 90px;
+        @include mq(sp){
+            margin-top: 16px;
+            display: flex;
+        }
     }
     .ank{
         @extend %__font-bold;
         padding: 8px 0;
+        @include mq(sp){
+            width: 50%;
+            text-align: center;
+        }
         &:hover{
             color: map-get($colors, 'title-01');
             cursor: pointer;
@@ -77,12 +125,17 @@ $colors: (
 #right{
     width: 100%;
     margin-left: 32%;
+    @include mq(sp){
+        margin-left: 0;
+        padding: 0 12px;
+        margin-top: 200px;
+    }
     .right{
         &-inner{
             margin-top: 60px;
         }
         &-sections{
-            margin-top: 80px;
+            margin-top: 90px;
             &:first-child{
                 margin-top: 0;
             }
@@ -163,6 +216,9 @@ $colors: (
     }
     .right-body__table{
         border-collapse: collapse;
+        @include mq(sp){
+            width: 100%;
+        }
     }
     .table{
         &-rows{

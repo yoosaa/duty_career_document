@@ -11,6 +11,7 @@ module.exports = {
     // 出力先
     path: path.join(__dirname, '../')
   },
+  watch: true,
   module: {
     rules: [
       {
