@@ -3,12 +3,13 @@
  */
 require('intersection-observer');
 require('smoothscroll-polyfill');
+let $ = require('jquery');
 
 
 /**
  * 読み込み後
  */
-window.addEventListener('load',function(){
+window.addEventListener('load', function() {
 
     // intersect area
     const options = {
@@ -19,29 +20,30 @@ window.addEventListener('load',function(){
     const observer = new IntersectionObserver(doWhenIntersect, options);
     const observer_target = document.querySelectorAll('.right-sections');
 
-    observer_target.forEach(e=>{
+    observer_target.forEach(e => {
         observer.observe(e);
     });
 
 
-    const click_target = document.querySelectorAll('.ank');
+    const click_target = $('.ank');
+    console.log(click_target);
     let scroll_target = '';
     let scroll_distance = 0;
-    click_target.forEach(click_target=>{
-        
-        click_target.addEventListener('click',e=>{
+    click_target.each(function() {
+
+        console.log($(this));
+        $(this).on('click', function(e) {
             const windowW = window.innerWidth;
             const scroll_buffer = windowW > 599 ? 40 : 200;
-            const scroll_target = document.querySelectorAll('.right-title');
+            const scroll_target = $('.right-title');
+            // 調整用
+            const adjust = 0;
             let target_attribute = '';
-            scroll_target.forEach(element=>{
-                target_attribute = element.getAttribute('category');
-                if(target_attribute === e.target.getAttribute('category')){
-                    scroll_distance = window.pageYOffset + element.getBoundingClientRect().top - scroll_buffer;
-                    window.scrollTo({
-                        top: scroll_distance,
-                        behavior: "smooth"
-                    });
+            scroll_target.each(function() {
+                target_attribute = $(this).attr('category');
+                if (target_attribute === e.target.getAttribute('category')) {
+                    scroll_distance = ($(this).offset().top + adjust) - scroll_buffer;
+                    $('body,html').animate({ scrollTop: scroll_distance }, 300, 'swing');
                 }
             });
         });
@@ -57,11 +59,11 @@ window.addEventListener('load',function(){
  */
 const doWhenIntersect = target => {
 
-    target.forEach(entry=>{
+    target.forEach(entry => {
 
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
             const currentActive = document.querySelectorAll('.anks .current');
-            if(currentActive !== null){
+            if (currentActive !== null) {
                 currentActive[0].classList.remove('current');
             }
 

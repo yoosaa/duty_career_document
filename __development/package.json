@@ -1,31 +1,32 @@
 {
-  "name": "duty_career_document",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yoosaa/duty_career_document.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yoosaa/duty_career_document/issues"
-  },
-  "homepage": "https://github.com/yoosaa/duty_career_document#readme",
-  "devDependencies": {
-    "webpack": "^5.10.0",
-    "webpack-cli": "^4.2.0",
-    "@babel/core": "^7.12.9",
-    "babel-loader": "^8.2.2",
-    "@babel/preset-env": "^7.12.7"
-  },
-  "dependencies": {
-    "intersection-observer": "^0.11.0",
-    "smoothscroll-polyfill": "^0.4.4"
-  }
+    "name": "duty_career_document",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yoosaa/duty_career_document.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/yoosaa/duty_career_document/issues"
+    },
+    "homepage": "https://github.com/yoosaa/duty_career_document#readme",
+    "devDependencies": {
+        "webpack": "^5.10.0",
+        "webpack-cli": "^4.2.0",
+        "@babel/core": "^7.12.9",
+        "babel-loader": "^8.2.2",
+        "@babel/preset-env": "^7.12.7"
+    },
+    "dependencies": {
+        "intersection-observer": "^0.11.0",
+        "smoothscroll-polyfill": "^0.4.4",
+        "jquery": "*"
+    }
 }
