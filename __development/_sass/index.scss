@@ -80,10 +80,16 @@ $breakpoints: ( sp: "screen and (max-width: 599px)", tab: "screen and (max-width
         &__name {
             @extend %__font-bold;
             font-size: 24px;
+            line-height: 1;
+        }
+        &__date {
+            font-size: 14px;
+            margin-top: 2px;
         }
         &__human {
             @extend %__font-bold;
             font-size: 18px;
+            margin-top: 6px;
         }
     }
     .left-appeal {
