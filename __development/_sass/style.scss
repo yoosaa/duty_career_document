@@ -1,0 +1,284 @@
+// import
+@import './modules/destyle';
+%__font-14 {
+    font-size: 14px;
+}
+
+%__font-16 {
+    font-size: 16px;
+}
+
+%__font-bold {
+    font-weight: bold;
+}
+
+$colors: ( title-01: #0366d6, back-01: #eaecef);
+$layout-width-inner: 1012px;
+$breakpoints: ( sp: "screen and (max-width: 599px)", tab: "screen and (max-width: #{$layout-width-inner - 1px})", pc: "screen and (min-width: #{$layout-width-inner})", );
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#title {
+    width: 1012px;
+    text-align: center;
+    font-size: 24px;
+    margin: 0 auto;
+}
+
+#main {
+    .background {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.4;
+    }
+    line-height: 1.6;
+    width: 1012px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    @include mq(sp) {
+        width: 100%;
+    }
+    [class*=col-] {
+        padding-right: 16px;
+        padding-left: 16px;
+        @include mq(sp) {
+            padding: 0;
+            padding-top: 18px;
+        }
+    }
+    .col-3 {
+        width: 20%;
+        @include mq(sp) {
+            width: 100%;
+            background-color: #fff;
+        }
+    }
+    .col-1 {
+        width: 75%;
+    }
+    @include mq(sp) {
+        display: block;
+    }
+}
+
+#left {
+    position: fixed;
+    left: calc(50% - 506px);
+    top: 40px;
+    @include mq(sp) {
+        top: 0;
+        left: 0;
+        height: 160px;
+        z-index: 2;
+    }
+    .left-name,
+    .left-appeal {
+        @include mq(sp) {
+            padding: 0 12px;
+        }
+    }
+    .left-name {
+        &__name {
+            @extend %__font-bold;
+            font-size: 24px;
+        }
+        &__human {
+            @extend %__font-bold;
+            font-size: 18px;
+        }
+    }
+    .left-appeal {
+        &__text {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+    }
+    .anks {
+        margin-top: 90px;
+        @include mq(sp) {
+            margin-top: 16px;
+            display: flex;
+        }
+    }
+    .ank {
+        @extend %__font-bold;
+        position: relative;
+        padding: 8px 0 8px 4px;
+        z-index: 0;
+        @include mq(sp) {
+            width: 50%;
+            text-align: center;
+            background-color: #fff;
+        }
+        &:hover {
+            color: map-get($colors, 'title-01');
+            cursor: pointer;
+        }
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: map-get($colors, 'back-01');
+            transition: 0.5s ease-in-out;
+            z-index: -1;
+        }
+        &.current {
+            &:after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+#right {
+    width: 100%;
+    margin-left: 32%;
+    @include mq(sp) {
+        margin-left: 0;
+        padding: 0 12px;
+        margin-top: 200px;
+    }
+    .right {
+        &-inner {
+            margin-top: 60px;
+        }
+        &-sections {
+            margin-top: 90px;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+        &-title {
+            @extend %__font-bold;
+            position: relative;
+            padding-left: 12px;
+            color: map-get($colors, 'title-01');
+            font-size: 22px;
+            &:before {
+                content: "";
+                width: 3px;
+                height: 100%;
+                display: block;
+                background-color: map-get($colors, 'title-01');
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        &-body {
+            margin-top: 24px;
+        }
+    }
+    .careers {
+        margin-bottom: 24px;
+        .year {
+            @extend %__font-14;
+            font-weight: normal;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            &:after {
+                content: "";
+                width: 83%;
+                vertical-align: middle;
+                height: 2px;
+                background-color: #e1e4e8;
+                display: block;
+                margin: auto;
+                /* right: 0; */
+                z-index: -1;
+                @include mq(sp) {
+                    width: 65%;
+                }
+            }
+            &-inner {
+                display: block;
+                width: 17%;
+                @include mq(sp) {
+                    width: 35%;
+                }
+            }
+        }
+        .affiliation {
+            @extend %__font-16;
+            margin-bottom: 12px;
+            font-weight: bold;
+            &-info {
+                @extend %__font-14;
+                margin-top: 12px;
+                margin-bottom: 24px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        &-body {
+            padding: 24px;
+            position: relative;
+            &:before {
+                content: "";
+                position: absolute;
+                display: block;
+                width: 2px;
+                height: 95%;
+                margin: auto;
+                top: 0;
+                bottom: 0;
+                left: 8px;
+                background-color: #e1e4e8;
+            }
+        }
+    }
+    .right-body__table {
+        border-collapse: collapse;
+        @include mq(sp) {
+            width: 100%;
+        }
+    }
+    .table {
+        &-rows {
+            border: 1px solid map-get($colors, 'back-01');
+        }
+        &-left {
+            font-weight: bold;
+            text-align: center;
+            padding: 16px 0;
+            border-right: 1px solid map-get($colors, 'back-01');
+            background-color: map-get($colors, 'back-01');
+        }
+        &-right {
+            padding-left: 16px;
+            vertical-align: middle;
+        }
+        &-all {
+            padding: 16px;
+            &__title {
+                @extend %__font-bold;
+            }
+            &__text {
+                margin-top: 8px;
+            }
+        }
+    }
+    .another {
+        text-align: right;
+        font-size: 12px;
+        margin-bottom: 60px;
+    }
+}
