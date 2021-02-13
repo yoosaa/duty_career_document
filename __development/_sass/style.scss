@@ -118,7 +118,7 @@ body {
     .anks {
         margin-top: 90px;
         @include mq(sp) {
-            margin-top: 8px;
+            margin-top: 6px;
             display: flex;
         }
     }
@@ -162,7 +162,7 @@ body {
     @include mq(sp) {
         margin-left: 0;
         padding: 0 12px;
-        margin-top: 200px;
+        margin-top: 250px;
     }
     .right {
         &-inner {
