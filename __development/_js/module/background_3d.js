@@ -5,14 +5,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 let container, clock, mixer, actions, activeAction, previousAction;
 let camera, scene, renderer, model, face;
-const append_target = document.getElementById('main');
+const append_target = document.getElementsByTagName('body');
 
 
 export function init() {
 
     container = document.createElement('div');
     container.classList.add('background');
-    append_target.appendChild(container);
+    append_target[0].appendChild(container);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.25, 100);
     camera.position.set(12, 4, 2);
@@ -25,7 +25,6 @@ export function init() {
     clock = new THREE.Clock();
 
     // lights
-
     const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
     hemiLight.position.set(0, 20, 0);
     scene.add(hemiLight);

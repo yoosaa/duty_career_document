@@ -23,16 +23,6 @@ $breakpoints: ( sp: "screen and (max-width: 599px)", tab: "screen and (max-width
 
 body {
     background-color: rgba(0, 0, 0, 0.2);
-}
-
-#title {
-    width: 1012px;
-    text-align: center;
-    font-size: 24px;
-    margin: 0 auto;
-}
-
-#main {
     .background {
         width: 100vw;
         height: 100vh;
@@ -46,8 +36,19 @@ body {
             height: auto;
         }
     }
-    line-height: 1.6;
+}
+
+#title {
     width: 1012px;
+    text-align: center;
+    font-size: 24px;
+    margin: 0 auto;
+}
+
+#main {
+    line-height: 1.6;
+    width: 100%;
+    max-width: 1012px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -79,7 +80,7 @@ body {
 
 #left {
     position: fixed;
-    left: calc(50% - 506px);
+    // left: calc(50% - 506px);
     top: 40px;
     @include mq(sp) {
         top: 0;
@@ -157,9 +158,10 @@ body {
 }
 
 #right {
-    width: 100%;
-    margin-left: 32%;
+    width: 80%;
+    margin-left: 30%;
     @include mq(sp) {
+        width: 100%;
         margin-left: 0;
         padding: 0 12px;
         margin-top: 250px;
