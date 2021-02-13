@@ -5,6 +5,8 @@ require('intersection-observer');
 require('smoothscroll-polyfill');
 let $ = require('jquery');
 
+import * as threeFunctions from './module/background_3d';
+
 
 /**
  * 読み込み後
@@ -26,12 +28,10 @@ window.addEventListener('load', function() {
 
 
     const click_target = $('.ank');
-    console.log(click_target);
     let scroll_target = '';
     let scroll_distance = 0;
     click_target.each(function() {
 
-        console.log($(this));
         $(this).on('click', function(e) {
             const windowW = window.innerWidth;
             const scroll_buffer = windowW > 599 ? 40 : 200;
@@ -49,6 +49,9 @@ window.addEventListener('load', function() {
         });
 
     });
+
+    threeFunctions.init();
+    threeFunctions.animate();
 
 });
 
