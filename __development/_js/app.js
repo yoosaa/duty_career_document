@@ -13,6 +13,9 @@ import * as threeFunctions from './module/background_3d';
  */
 window.addEventListener('load', function() {
 
+    threeFunctions.init();
+    threeFunctions.animate();
+
     // intersect area
     const options = {
         root: null,
@@ -21,6 +24,7 @@ window.addEventListener('load', function() {
     };
     const observer = new IntersectionObserver(doWhenIntersect, options);
     const observer_target = document.querySelectorAll('.right-sections');
+    console.log(observer_target)
 
     observer_target.forEach(e => {
         observer.observe(e);
@@ -50,9 +54,6 @@ window.addEventListener('load', function() {
 
     });
 
-    threeFunctions.init();
-    threeFunctions.animate();
-
 });
 
 
@@ -65,6 +66,7 @@ const doWhenIntersect = target => {
     target.forEach(entry => {
 
         if (entry.isIntersecting) {
+            console.log('do')
             const currentActive = document.querySelectorAll('.anks .current');
             if (currentActive !== null) {
                 currentActive[0].classList.remove('current');
