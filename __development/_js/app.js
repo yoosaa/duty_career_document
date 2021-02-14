@@ -6,12 +6,24 @@ require('smoothscroll-polyfill');
 let $ = require('jquery');
 
 import * as threeFunctions from './module/background_3d';
+import { WriteChart } from './module/chart';
 
 
 /**
  * 読み込み後
  */
-window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', () => {
+
+    // chart
+    WriteChart();
+    // 3d
+    threeFunctions.init();
+    threeFunctions.animate();
+
+});
+
+
+window.addEventListener('load', () => {
 
     // intersect area
     const options = {

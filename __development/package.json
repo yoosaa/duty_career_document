@@ -29,6 +29,7 @@
         "intersection-observer": "^0.11.0",
         "smoothscroll-polyfill": "^0.4.4",
         "jquery": "*",
-        "three": "*"
+        "three": "*",
+        "chart.js": "*"
     }
 }

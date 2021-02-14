@@ -14,7 +14,7 @@ export function init() {
     container.classList.add('background');
     append_target.appendChild(container);
 
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.25, 100);
+    camera = new THREE.PerspectiveCamera(45, document.body.clientWidth / window.innerHeight, 0.25, 100);
     camera.position.set(12, 4, 2);
     camera.lookAt(new THREE.Vector3(0, 4, 0));
 
@@ -65,7 +65,8 @@ export function init() {
     // renderer
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    console.log(document.body.clientWidth);
+    renderer.setSize(document.body.clientWidth, window.innerHeight);
     renderer.outputEncoding = THREE.sRGBEncoding;
     container.appendChild(renderer.domElement);
 
@@ -95,10 +96,10 @@ function createAnimation(model, animations) {
 
 function onWindowResize() {
 
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = document.body.clientWidth / window.innerHeight;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(document.body.clientWidth, window.innerHeight);
 
 }
 
