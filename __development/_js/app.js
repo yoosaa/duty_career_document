@@ -62,9 +62,6 @@ window.addEventListener('load', () => {
 
     });
 
-    threeFunctions.init();
-    threeFunctions.animate();
-
 });
 
 
